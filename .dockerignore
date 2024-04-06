@@ -1,0 +1,5 @@
+/.venv/
+Dockerfile
+/.idea/
+/.dockerignore
+/.docker-compose.yml

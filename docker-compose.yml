@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  pytorch_rocm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    group_add:
+      - video
+    ipc: host
+    shm_size: 8G
+    container_name: pytorch_rocm_container
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./models:/app/models
